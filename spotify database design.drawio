@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-12-13T01:37:21.201Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="inQmSgJqrfDVoO2zDDRx" version="22.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-13T15:58:01.419Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="JnrBk2SY5K_hbU6boIHd" version="22.1.7" type="github">
   <diagram name="Page-1" id="OrWFvQ6UOOr_lnKIEQu-">
     <mxGraphModel dx="2068" dy="1629" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -729,6 +729,18 @@
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="420" y="310" as="sourcePoint" />
             <mxPoint x="520" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JVFcnxBrBhBk1abQde2z-204" value="" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=82;" vertex="1" parent="1">
+          <mxGeometry x="220" y="1070" width="530" height="1670" as="geometry" />
+        </mxCell>
+        <mxCell id="JVFcnxBrBhBk1abQde2z-203" value="Database Design SQL as Database&#xa;&#xa;CREATE TABLE User(&#xa;    UserID int NOT NULL,&#xa;    email VARCHAR(255) NOT NULL UNIQUE,&#xa;    password VARCHAR(255),&#xa;    subscription_type VARCHAR(255),&#xa;    CHECK (subscription_type IN (&#39;Free&#39;,&#39;Premium&#39;)),&#xa;    PRIMARY KEY (UserID)&#xa;);&#xa;&#xa;&#xa;CREATE TABLE Artist(&#xa;    ArtistID int NOT NULL,&#xa;    name VARCHAR(255),&#xa;    genre VARCHAR(255),&#xa;    bio VARCHAR(255),&#xa;    photo VARCHAR(255)&#xa;    PRIMARY KEY (ArtistID)&#xa;);&#xa;&#xa;&#xa;CREATE TABLE genre(&#xa;    genreID int NOT NULL,&#xa;    genreName VARCHAR(255),&#xa;    PRIMARY KEY (genreID)&#xa;);&#xa;&#xa;&#xa;CREATE TABLE Song(&#xa;    SongID int NOT NULL,&#xa;    title VARCHAR(255),&#xa;    genre VARCHAR(255),&#xa;    duration VARCHAR(255),&#xa;    audio_file_url VARCHAR(255),&#xa;    artistID int,&#xa;    albumID int,&#xa;    PRIMARY KEY (SongID),&#xa;    FOREIGN KEY (artistID) REFERENCES Artist(artistID),&#xa;    FOREIGN KEY (albumID) REFERENCES Album(albumID)&#xa;);&#xa;&#xa;&#xa;CREATE TABLE Playlist(&#xa;    playlistID int NOT NULL,&#xa;    name VARCHAR(255),&#xa;    description VARCHAR(255),&#xa;    user_id int,&#xa;    PRIMARY KEY(playlistID),&#xa;    FOREIGN KEY (user_id) REFERENCES User(user_id)&#xa;);&#xa;&#xa;&#xa;CREATE TABLE Album(&#xa;    albumID int NOT NULL,&#xa;    title VARCHAR(255),&#xa;    release_date VARCHAR(255),&#xa;    cover_art_url VARCHAR(255),&#xa;    artistID int,&#xa;    PRIMARY KEY (albumID),&#xa;    FOREIGN KEY (albumID) REFERENCES Album(albumID)&#xa;);&#xa;&#xa;&#xa;CREATE TABLE User_Songs(&#xa;    usersongsID int NOT NULL,&#xa;    timestamp VARCHAR(255),&#xa;    userID int,&#xa;    songID int,&#xa;    PRIMARY KEY (usersongsID),&#xa;    FOREIGN KEY (userID) REFERENCES User(userID)&#xa;);&#xa;&#xa;&#xa;CREATE TABLE User_Playlists(&#xa;    userplaylistID int NOT NULL,&#xa;    permission_level VARCHAR(255),&#xa;    userID int,&#xa;    PRIMARY KEY (userplaylistID),&#xa;    FOREIGN KEY (userID) REFERENCES User(userID)&#xa;);&#xa;&#xa;&#xa;CREATE TABLE artist_genres(&#xa;    artistgenreID int NOT NULL,&#xa;    artistID int,&#xa;    genreID int,&#xa;    PRIMARY KEY (artistID),&#xa;    FOREIGN KEY (artistID) REFERENCES Artist(artistID),&#xa;    FOREIGN KEY (genreID) REFERENCES Genre(genreID) &#xa;);&#xa;&#xa;&#xa;CREATE TABLE playlist_songs(&#xa;    playlistsongID int NOT NULL,&#xa;    playlistID int,&#xa;    songID int,&#xa;    PRIMARY KEY (artistID),&#xa;    FOREIGN KEY (songID) REFERENCES Song(songID),&#xa;    FOREIGN KEY (playlistID) REFERENCES Playlist(playlistID) &#xa;);&#xa;&#xa;&#xa;CREATE TABLE album_songs(&#xa;    albumsongID int NOT NULL,&#xa;    albumID int,&#xa;    songID int,&#xa;    PRIMARY KEY (albumsongID),&#xa;    FOREIGN KEY (songID) REFERENCES Song(songID),&#xa;    FOREIGN KEY (albumID) REFERENCES Album(albumID) &#xa;);" style="text;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="270" y="1090" width="360" height="1500" as="geometry" />
+        </mxCell>
+        <mxCell id="JVFcnxBrBhBk1abQde2z-207" value="" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0.013;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="273" y="1112.5" as="sourcePoint" />
+            <mxPoint x="463" y="1113" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
